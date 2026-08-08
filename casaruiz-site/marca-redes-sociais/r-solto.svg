@@ -1,0 +1,5 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <path d="M40,128 C56,164 84,178 106,164 C128,150 98,122 76,130 C54,138 68,164 96,164 C130,164 152,138 146,102"
+        fill="none" stroke="#9A6E28" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="100" y="112" text-anchor="middle" font-family="Georgia,serif" font-size="94" font-weight="700" fill="#16262E">R</text>
+</svg>

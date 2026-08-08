@@ -1,0 +1,67 @@
+<svg viewBox="0 0 820 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="dt dd" style="width:100%;height:auto;display:block">
+<title id="dt">Diagrama das camadas</title>
+<desc id="dd">Os canais de marketing geram procura na base. A camada Casa Ruiz atravessa-os e liga-os, transformando procura em negócio fechado.</desc>
+
+<g stroke="#B4C4C9" stroke-width="1">
+  <line x1="40" y1="20" x2="40" y2="360" stroke-dasharray="2 5"/>
+  <line x1="780" y1="20" x2="780" y2="360" stroke-dasharray="2 5"/>
+</g>
+
+<g class="camada-g g-canais">
+  <g font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#4A5F6B" text-anchor="middle">
+    <g stroke="#B4C4C9" stroke-width="1" fill="none">
+      <rect x="52" y="292" width="128" height="46"/>
+      <rect x="196" y="292" width="128" height="46"/>
+      <rect x="340" y="292" width="128" height="46"/>
+      <rect x="484" y="292" width="128" height="46"/>
+      <rect x="628" y="292" width="128" height="46"/>
+    </g>
+    <text x="116" y="320">SEO</text>
+    <text x="260" y="320">CONTEÚDO</text>
+    <text x="404" y="320">GOOGLE ADS</text>
+    <text x="548" y="320">META ADS</text>
+    <text x="692" y="320">REDES</text>
+  </g>
+  <text x="40" y="364" font-family="IBM Plex Mono, monospace" font-size="9.5"
+        letter-spacing="1.6" fill="#B3241C">CANAIS · GERAM PROCURA</text>
+</g>
+
+<g class="camada-g g-liga1" stroke="#B4C4C9" stroke-width="1">
+  <line x1="116" y1="292" x2="116" y2="238"/>
+  <line x1="260" y1="292" x2="260" y2="238"/>
+  <line x1="404" y1="292" x2="404" y2="238"/>
+  <line x1="548" y1="292" x2="548" y2="238"/>
+  <line x1="692" y1="292" x2="692" y2="238"/>
+</g>
+
+<g class="camada-g g-camada">
+  <rect x="52" y="150" width="704" height="88" fill="#12232E"/>
+  <text x="68" y="176" font-family="IBM Plex Mono, monospace" font-size="9.5"
+        letter-spacing="1.6" fill="#D65A45">CAMADA CASA RUIZ · LIGA E SUSTENTA</text>
+  <g font-family="Archivo, sans-serif" font-size="15" fill="#F7FAFA" text-anchor="middle">
+    <text x="140" y="214">Presença</text>
+    <text x="330" y="214">Posicionamento</text>
+    <text x="510" y="214">Conteúdo</text>
+    <text x="672" y="214">Crescimento</text>
+  </g>
+  <g stroke="#4A5F6B" stroke-width="1">
+    <line x1="238" y1="196" x2="238" y2="224"/>
+    <line x1="424" y1="196" x2="424" y2="224"/>
+    <line x1="594" y1="196" x2="594" y2="224"/>
+  </g>
+</g>
+
+<g class="camada-g g-seta">
+  <path d="M404,150 L404,104" fill="none" stroke="#B3241C" stroke-width="1.4"/>
+  <path d="M399,112 L404,102 L409,112" fill="none" stroke="#B3241C" stroke-width="1.4"
+        stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+
+<g class="camada-g g-resultado">
+  <rect x="286" y="56" width="236" height="46" fill="none" stroke="#B3241C" stroke-width="1.4"/>
+  <text x="404" y="84" font-family="Archivo, sans-serif" font-size="16"
+        fill="#12232E" text-anchor="middle">Negócio fechado</text>
+  <text x="40" y="34" font-family="IBM Plex Mono, monospace" font-size="9.5"
+        letter-spacing="1.6" fill="#B3241C">RESULTADO</text>
+</g>
+</svg>

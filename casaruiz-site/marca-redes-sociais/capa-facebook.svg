@@ -1,0 +1,10 @@
+<svg viewBox="0 0 820 312" xmlns="http://www.w3.org/2000/svg">
+  <rect width="820" height="312" fill="#16262E"/>
+  <circle cx="150" cy="156" r="90" fill="none" stroke="#F2EFE9" stroke-width="4"/>
+  <path d="M100,190 C118,232 152,248 178,230 C204,212 168,178 142,188 C116,196 132,232 168,232 C210,232 236,196 228,152"
+        fill="none" stroke="#C8A55A" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="150" y="147" text-anchor="middle" font-family="Georgia,serif" font-size="74" font-weight="700" fill="#F2EFE9">CR</text>
+  <text x="272" y="145" font-family="Georgia,serif" font-size="46" font-weight="700" fill="#F2EFE9">Casa Ruiz</text>
+  <text x="272" y="182" font-family="Georgia,serif" font-style="italic" font-size="22" fill="#C8A55A">Infraestrutura de crescimento digital</text>
+  <text x="272" y="212" font-family="monospace" font-size="14" letter-spacing="2" fill="#93A6AA">CASARUIZ.PT · FIGUEIRA DA FOZ</text>
+</svg>

@@ -1,0 +1,30 @@
+[build]
+  publish = "."
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[redirects]]
+  from = "/diagnostico"
+  to = "/diagnostico/"
+  status = 301
+[[redirects]]
+  from = "/metodo"
+  to = "/metodo/"
+  status = 301
+[[redirects]]
+  from = "/sobre"
+  to = "/sobre/"
+  status = 301
+[[redirects]]
+  from = "/casos"
+  to = "/casos/"
+  status = 301
+[[redirects]]
+  from = "/contacto"
+  to = "/contacto/"
+  status = 301

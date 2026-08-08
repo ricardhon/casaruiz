@@ -1,0 +1,661 @@
+/* Casa Ruiz — folha de estilo única
+   Direção: desenho técnico. Tinta de projeto, papel frio, latão.
+   Assinatura: linhas de cota com anotações monoespaçadas. */
+
+:root{
+  /* Carta náutica — Figueira da Foz, 40°09'N 8°51'W */
+  --tinta:#12232E;        /* tinta de carta */
+  --tinta-70:#4A5F6B;
+  --papel:#E9EEEF;        /* papel de carta, frio */
+  --papel-2:#DDE5E7;
+  --linha:#B4C4C9;        /* traço de construção */
+  --agua:#CFDEE4;         /* mancha de água */
+  --latao:#B3241C;        /* magenta de carta — marca regulamentar */
+  --latao-claro:#D65A45;
+  --branco:#F7FAFA;
+
+  --display:"Archivo",-apple-system,"Segoe UI",sans-serif;
+  --corpo:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+
+  --margem:clamp(1.25rem,5vw,5.5rem);
+  --max:1180px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+body{
+  margin:0;background:var(--papel);color:var(--tinta);
+  font-family:var(--corpo);font-size:clamp(1rem,.96rem + .2vw,1.09rem);
+  line-height:1.65;-webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+
+/* ---- tipografia ---- */
+h1,h2,h3{font-family:var(--display);line-height:1.02;margin:0;
+  font-variation-settings:"wdth" 112;font-weight:600;letter-spacing:-.015em}
+h1{font-size:clamp(2.1rem,1.3rem + 3.4vw,3.9rem);
+  font-variation-settings:"wdth" 118;font-weight:700;text-transform:none}
+h2{font-size:clamp(1.85rem,1.3rem + 2.2vw,3rem)}
+h3{font-size:clamp(1.18rem,1.05rem + .6vw,1.5rem);letter-spacing:-.01em}
+p{margin:0 0 1.15em}
+.lead{font-size:clamp(1.1rem,1rem + .5vw,1.35rem);line-height:1.5;color:var(--tinta-70);max-width:46ch}
+
+/* ---- anotação monoespaçada (assinatura) ---- */
+.anot{
+  font-family:var(--mono);font-size:.7rem;font-weight:500;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--latao);
+}
+.anot-sec{color:var(--tinta-70)}
+
+/* linha de cota: traço com marcas nas pontas */
+.cota{display:flex;align-items:center;gap:.85rem;margin-bottom:1.6rem}
+.cota::after{
+  content:"";flex:1;height:1px;background:var(--linha);
+  position:relative;
+}
+.cota-tick{
+  width:1px;height:11px;background:var(--latao);flex:none;
+}
+
+/* ---- estrutura ---- */
+.env{max-width:var(--max);margin-inline:auto;padding-inline:var(--margem)}
+.sec{padding-block:clamp(2.6rem,4.5vw,4.2rem);border-top:1px solid var(--linha)}
+.sec-primeira{border-top:0}
+
+/* folha com margem anotada, como prancha de desenho */
+.prancha{display:grid;grid-template-columns:minmax(0,1fr);gap:2.5rem}
+@media (min-width:900px){
+  .prancha{grid-template-columns:172px minmax(0,1fr);gap:3.5rem}
+  .prancha > .margem-anot{padding-top:.5rem;border-right:1px solid var(--linha)}
+}
+.margem-anot{font-family:var(--mono);font-size:.7rem;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--tinta-70);line-height:1.9}
+.margem-anot strong{display:block;color:var(--latao);font-weight:500}
+
+/* ---- navegação ---- */
+.topo{position:sticky;top:0;z-index:50;background:rgba(239,241,238,.93);
+  backdrop-filter:blur(9px);border-bottom:1px solid var(--linha)}
+.topo-in{display:flex;align-items:center;justify-content:space-between;
+  gap:1.5rem;padding-block:1rem}
+.marca{font-family:var(--display);font-size:1.22rem;font-weight:600;
+  letter-spacing:-.015em;text-decoration:none;white-space:nowrap}
+.marca span{color:var(--latao)}
+.nav{display:flex;gap:1.6rem;align-items:center;flex-wrap:wrap}
+.nav a{font-size:.9rem;text-decoration:none;color:var(--tinta-70);
+  padding-block:.2rem;border-bottom:1px solid transparent;transition:.18s}
+.nav a:hover,.nav a:focus-visible{color:var(--tinta);border-bottom-color:var(--latao)}
+.nav a[aria-current="page"]{color:var(--tinta);border-bottom-color:var(--latao)}
+@media (max-width:780px){.nav{display:none}.nav-m{display:flex}}
+.nav-m{display:none;gap:1.1rem}
+.nav-m a{font-size:.82rem;text-decoration:none;color:var(--tinta-70)}
+
+/* ---- botões ---- */
+.btn{display:inline-flex;align-items:center;gap:.6rem;
+  font-family:var(--mono);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:.95rem 1.6rem;text-decoration:none;border:1px solid var(--tinta);
+  background:var(--tinta);color:var(--branco);transition:.18s}
+.btn:hover,.btn:focus-visible{background:var(--latao);border-color:var(--latao)}
+.btn-vazio{background:transparent;color:var(--tinta)}
+.btn-vazio:hover,.btn-vazio:focus-visible{background:var(--tinta);color:var(--branco);border-color:var(--tinta)}
+:focus-visible{outline:2px solid var(--latao);outline-offset:3px}
+
+/* ---- hero ---- */
+.hero{padding-block:clamp(2.6rem,6vw,5rem) clamp(2rem,4vw,3.2rem)}
+.hero h1{max-width:15ch;margin-bottom:1.4rem}
+.hero .lead{margin-bottom:2.2rem}
+.hero-acao{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+
+/* ---- grelha de prova ---- */
+.prova{display:grid;gap:1px;background:var(--linha);border:1px solid var(--linha);
+  grid-template-columns:repeat(auto-fit,minmax(178px,1fr))}
+.prova > div{background:var(--papel);padding:1.6rem 1.4rem}
+.prova .n{font-family:var(--display);font-size:clamp(1.7rem,1.3rem + 1.4vw,2.4rem);
+  line-height:1;display:block;margin-bottom:.5rem}
+.prova .r{font-size:.86rem;color:var(--tinta-70);line-height:1.45}
+
+/* ---- listas estruturais ---- */
+.pilares{display:grid;gap:2.2rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:2.5rem}
+.pilar h3{margin-bottom:.6rem}
+.pilar p{font-size:.95rem;color:var(--tinta-70);margin:0}
+
+.camadas{list-style:none;margin:2rem 0 0;padding:0;counter-reset:c}
+.camadas li{counter-increment:c;display:grid;grid-template-columns:2.6rem 1fr;
+  gap:1.1rem;padding:1.05rem 0;border-top:1px solid var(--linha)}
+.camadas li::before{content:counter(c,decimal-leading-zero);grid-column:1;
+  font-family:var(--mono);font-size:.75rem;color:var(--latao);padding-top:.32rem}
+.camadas b{grid-column:2;display:block;font-weight:600;margin-bottom:.15rem}
+.camadas span{grid-column:2;font-size:.93rem;color:var(--tinta-70)}
+
+/* ---- bloco de oferta ---- */
+.oferta{background:var(--tinta);color:var(--papel);padding:clamp(2rem,5vw,3.4rem)}
+.oferta h2{color:var(--branco)}
+.oferta .lead{color:#B9C6C9}
+.oferta .anot{color:var(--latao-claro)}
+.oferta .btn{background:var(--latao);border-color:var(--latao);color:#12242E}
+.oferta .btn:hover,.oferta .btn:focus-visible{background:var(--latao-claro);border-color:var(--latao-claro)}
+.preco{font-family:var(--display);font-size:clamp(2.6rem,2rem + 3vw,4rem);
+  line-height:1;margin:.4rem 0 .3rem;color:var(--branco)}
+.preco-nota{font-family:var(--mono);font-size:.75rem;letter-spacing:.09em;color:#93A6AA}
+
+/* ---- perguntas ---- */
+.faq{margin-top:2.2rem;border-top:1px solid var(--linha)}
+.faq details{border-bottom:1px solid var(--linha)}
+.faq summary{cursor:pointer;padding:1.15rem 0;font-weight:600;
+  list-style:none;display:flex;justify-content:space-between;gap:1.5rem;align-items:baseline}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--mono);color:var(--latao);flex:none}
+.faq details[open] summary::after{content:"–"}
+.faq details > p{margin:0 0 1.15rem;color:var(--tinta-70);max-width:62ch}
+
+/* ---- percurso (sobre) ---- */
+.percurso{list-style:none;margin:2rem 0 0;padding:0}
+.percurso li{display:grid;grid-template-columns:minmax(0,10rem) 1fr;gap:1.2rem;
+  padding:1.1rem 0;border-top:1px solid var(--linha)}
+.percurso .quando{font-family:var(--mono);font-size:.74rem;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--latao);padding-top:.3rem}
+.percurso b{display:block}
+.percurso span{font-size:.93rem;color:var(--tinta-70)}
+@media (max-width:640px){.percurso li{grid-template-columns:1fr;gap:.35rem}}
+
+/* ---- cartões de caso ---- */
+.casos{display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:2.5rem}
+.caso{border:1px solid var(--linha);padding:1.8rem;background:var(--branco);
+  text-decoration:none;display:block;transition:.18s}
+.caso:hover,.caso:focus-visible{border-color:var(--latao);transform:translateY(-2px)}
+.caso h3{margin:.5rem 0 .7rem}
+.caso p{font-size:.94rem;color:var(--tinta-70);margin:0}
+
+/* ---- rodapé ---- */
+.rodape{border-top:1px solid var(--tinta);background:var(--papel-2);
+  padding-block:clamp(2.5rem,5vw,3.6rem);margin-top:0}
+.rodape-in{display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.rodape a{color:var(--tinta-70);text-decoration:none;font-size:.9rem;
+  display:block;padding-block:.22rem}
+.rodape a:hover,.rodape a:focus-visible{color:var(--latao)}
+.rodape .anot{margin-bottom:.9rem;display:block}
+.legal{margin-top:2.5rem;padding-top:1.4rem;border-top:1px solid var(--linha);
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;color:var(--tinta-70)}
+
+.wa{display:inline-flex;align-items:center;gap:.5rem}
+
+/* ---- classes em falta (Sobre, Casos, EvaDerm, Contacto) ---- */
+.eyebrow{font-family:var(--mono);font-size:.7rem;font-weight:500;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--latao);margin:0 0 1.1rem}
+.lead.estreito,p.estreito{max-width:56ch}
+.grelha{display:grid;gap:1.5rem}
+.grelha.g2{grid-template-columns:repeat(auto-fit,minmax(272px,1fr))}
+.grelha.g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.cartao{border:1px solid var(--linha);background:var(--branco);padding:1.8rem}
+.cartao h3{margin:0 0 .6rem}
+.cartao p{font-size:.95rem;color:var(--tinta-70);margin:0}
+.acoes{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.3rem}
+.btn.linha{background:transparent;color:var(--tinta);border-color:var(--tinta)}
+.btn.linha:hover,.btn.linha:focus-visible{background:var(--tinta);color:var(--branco)}
+.mono-nota{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;
+  color:var(--tinta-70);line-height:1.8}
+.salto{margin-top:2.2rem}
+main > section{padding-block:clamp(2.6rem,4.5vw,4.2rem);border-top:1px solid var(--linha)}
+main > section.hero{border-top:0;padding-block:clamp(2.6rem,6vw,5rem) clamp(2rem,4vw,3.2rem)}
+main > section > .env > .eyebrow{margin-top:0}
+
+/* ---- formulário de qualificação ---- */
+.form-q{margin-top:2.6rem;max-width:660px}
+.fase{border-top:1px solid var(--linha);padding-top:1.7rem;margin-top:2rem}
+.fase:first-of-type{border-top:0;margin-top:0;padding-top:0}
+.fase-cab{display:flex;align-items:baseline;gap:.9rem;margin-bottom:1.35rem}
+.fase-n{font-family:var(--mono);font-size:.72rem;color:var(--latao);letter-spacing:.1em}
+.fase-t{font-family:var(--display);font-size:1.25rem;font-weight:600;letter-spacing:-.01em}
+.campo{margin-bottom:1.4rem}
+.campo > label{display:block;font-weight:600;font-size:.94rem;margin-bottom:.3rem}
+.campo .ajuda{display:block;font-size:.83rem;color:var(--tinta-70);
+  margin-bottom:.6rem;line-height:1.5}
+.campo input[type=text],.campo input[type=email],.campo input[type=tel],.campo textarea{
+  width:100%;padding:.82rem .9rem;font-family:var(--corpo);font-size:1rem;
+  color:var(--tinta);background:var(--branco);border:1px solid var(--linha);border-radius:0}
+.campo textarea{min-height:108px;resize:vertical}
+.campo input:focus,.campo textarea:focus{outline:2px solid var(--latao);
+  outline-offset:1px;border-color:var(--latao)}
+.opcoes{display:grid;gap:.55rem}
+.opcao{display:flex;gap:.7rem;align-items:flex-start;padding:.78rem .9rem;
+  border:1px solid var(--linha);background:var(--branco);cursor:pointer;
+  transition:.15s;font-size:.94rem;line-height:1.45}
+.opcao:hover{border-color:var(--latao)}
+.opcao input{margin-top:.25rem;flex:none;accent-color:var(--latao)}
+.form-nota{font-family:var(--mono);font-size:.71rem;letter-spacing:.05em;
+  color:var(--tinta-70);line-height:1.75;margin-top:1.6rem}
+.oculto{position:absolute;left:-9999px}
+
+/* ================= CORREÇÕES DE RITMO E LAYOUT ================= */
+
+/* Títulos precisam de respirar. Era o bug mais visível do site. */
+h1{margin-bottom:1.3rem}
+h2{margin-bottom:1.1rem}
+h3{margin-bottom:.55rem}
+h2 + p, h2 + .lead, h1 + p, h1 + .lead, h3 + p{margin-top:0}
+.lead{margin-bottom:1.6rem}
+
+
+
+/* A "prancha" espremia o conteúdo. Coluna de anotação mais estreita,
+   e em ecrãs médios passa a empilhar em vez de comprimir. */
+@media (min-width:900px){
+  .prancha{grid-template-columns:150px minmax(0,1fr);gap:3rem}
+}
+@media (max-width:899px){
+  .prancha{display:block}
+  .prancha > .margem-anot{margin-bottom:1.4rem;padding-bottom:.9rem;
+    border-bottom:1px solid var(--linha);border-right:0}
+}
+.prancha > div > p,.prancha > div > .lead{max-width:60ch}
+
+/* Cartões e listas de casos com respiro interno coerente */
+.cartao h3{margin-bottom:.7rem}
+.cartao p + p{margin-top:.8rem}
+
+/* impedir que a monoespaçada "escape" para texto corrido */
+.cartao p,.caso p,.pilar p{font-family:var(--corpo)}
+
+/* botão dentro de cartão não cola ao texto */
+.cartao .acoes{margin-top:1.4rem}
+
+/* prova como linha corrida, não grelha de cartões */
+.prova-linha{display:block;background:none;border:0}
+.prova-linha{border-top:1px solid var(--tinta);border-bottom:1px solid var(--tinta)}
+.prova-linha > div{display:flex;align-items:baseline;gap:1.2rem;
+  padding:1rem 0;border-top:1px solid var(--linha)}
+.prova-linha > div:first-child{border-top:0}
+.prova-linha .n{flex:none;width:4.2rem;font-size:1.7rem;margin-bottom:0}
+.prova-linha .r{font-size:.92rem}
+
+/* ================= ACABAMENTO PREMIUM — hierarquia e interação ================= */
+
+/* transições consistentes em todo o sistema interativo */
+a,button,.btn,.cartao,.caso,.opcao,input,textarea{
+  transition:background-color .18s ease,border-color .18s ease,
+             color .18s ease,transform .18s ease,box-shadow .18s ease;
+}
+
+/* cartões com elevação sutil ao passar o rato — não "flutuam", assentam melhor */
+.cartao:hover{border-color:var(--latao);box-shadow:0 1px 0 var(--latao)}
+.caso:hover{box-shadow:0 4px 14px rgba(22,38,46,.08)}
+
+/* botões com resposta tátil discreta */
+.btn:active{transform:translateY(1px)}
+
+/* hierarquia mais clara entre título de secção e corpo */
+.margem-anot strong{font-size:.72rem;margin-bottom:.35rem}
+.lead{color:var(--tinta-70);font-weight:400}
+
+/* números grandes (prova, preço) com peso visual reforçado */
+.prova-linha .n,.preco{font-variant-numeric:oldstyle-nums lining-nums;letter-spacing:-.01em}
+
+/* separação mais nítida entre secções, sem parecer grelha de dashboard */
+
+
+/* estados de foco consistentes e visíveis — acessibilidade premium, não genérica */
+.btn:focus-visible,.opcao:focus-within{outline:2px solid var(--latao);outline-offset:2px}
+
+/* campos de formulário com hierarquia mais forte entre label e ajuda */
+.campo label{letter-spacing:-.01em}
+.campo .ajuda{opacity:.85}
+
+/* ================= IDENTIDADE — selo + lockup ================= */
+.marca{display:flex;align-items:center;gap:.7rem;color:var(--tinta)}
+.marca svg{color:var(--tinta)}
+.marca-tx{font-family:var(--display);font-size:1.22rem;font-weight:600;letter-spacing:-.015em}
+.marca-tx em{font-style:normal;color:var(--latao)}
+.rodape .marca-mini{display:flex;align-items:center;gap:.6rem;margin-bottom:.9rem}
+.rodape .marca-mini svg{width:22px;height:22px;color:var(--tinta)}
+
+/* ============================================================
+   PROVA DE PESQUISA — ficha técnica verificável
+   ============================================================ */
+.ficha{
+  border:1px solid var(--linha);
+  background:var(--branco);
+  padding:clamp(1.4rem,3vw,2.2rem);
+  margin:1.8rem 0 0;
+}
+.ficha + .ficha{margin-top:1.1rem}
+.ficha-termo{
+  font-family:var(--mono);font-size:clamp(.95rem,.9rem + .35vw,1.15rem);
+  color:var(--tinta);background:var(--papel-2);
+  padding:.6rem .8rem;margin:.5rem 0 1.4rem;
+  border-left:2px solid var(--latao);
+  word-break:break-word;
+}
+.ficha-linhas{
+  display:grid;grid-template-columns:auto 1fr;
+  gap:.5rem 1.4rem;align-items:baseline;margin-bottom:1.4rem;
+}
+.ficha-linhas dt{
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--latao);white-space:nowrap;
+}
+.ficha-linhas dd{margin:0;font-size:.95rem;color:var(--tinta)}
+.ficha-leitura{
+  font-size:.98rem;color:var(--tinta-70);
+  border-top:1px solid var(--linha);padding-top:1.1rem;margin:0 0 1.2rem;
+}
+.ficha-nota{
+  font-family:var(--mono);font-size:.68rem;line-height:1.7;
+  color:var(--tinta-70);margin:1.2rem 0 0;
+}
+.ficha[data-estado="progresso"]{border-style:dashed}
+
+/* ---- link externo ---- */
+.ext::after{
+  content:"\2197";font-family:var(--mono);font-size:.85em;
+  margin-left:.28em;display:inline-block;
+}
+
+/* ============================================================
+   DIAGRAMA — camadas do método
+   ============================================================ */
+.diagrama{margin:2.2rem 0 0}
+.diagrama svg{width:100%;height:auto;display:block}
+.diagrama figcaption{
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--tinta-70);margin-top:.9rem;
+}
+
+/* ============================================================
+   EXCLUSIVIDADE
+   ============================================================ */
+.excl{
+  border-top:1px solid var(--tinta);border-bottom:1px solid var(--tinta);
+  padding:clamp(2.2rem,5vw,3.4rem) 0;
+}
+.excl-nota{
+  font-family:var(--mono);font-size:.7rem;line-height:1.8;
+  color:var(--tinta-70);border-left:2px solid var(--linha);
+  padding-left:1rem;margin-top:1.8rem;max-width:60ch;
+}
+
+
+/* ============================================================
+   RITMO — quebrar a monotonia de secções idênticas
+   ============================================================ */
+
+/* secção invertida: prova em fundo escuro */
+.sec-escura{
+  background:var(--tinta);color:var(--papel);
+  border-top:0!important;
+}
+.sec-escura h2{color:var(--branco)}
+.sec-escura .lead{color:#A8B6BC}
+.sec-escura .anot{color:var(--latao-claro)}
+.sec-escura .cota::after{background:#3D525C}
+.sec-escura .ficha{
+  background:#16303D;border-color:#2F4A57;
+}
+.sec-escura .ficha-termo{
+  background:#0C1A22;color:var(--branco);border-left-color:var(--latao-claro);
+}
+.sec-escura .ficha-linhas dt{color:var(--latao-claro)}
+.sec-escura .ficha-linhas dd{color:var(--papel)}
+.sec-escura .ficha-leitura{color:#A8B6BC;border-top-color:#2F4A57}
+.sec-escura .ficha-nota{color:#7C919B}
+.sec-escura .btn-vazio{border-color:var(--latao-claro);color:var(--latao-claro)}
+.sec-escura .btn-vazio:hover{background:var(--latao-claro);color:var(--tinta)}
+
+/* secção com papel tingido */
+.sec-tom{background:var(--papel-2);border-top:0!important}
+
+/* fichas lado a lado quando há espaço */
+@media (min-width:900px){
+  .fichas-par{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;align-items:start}
+  .fichas-par .ficha{margin-top:0}
+  .fichas-par .ficha + .ficha{margin-top:0}
+}
+
+/* texto mais compacto */
+.sec p{margin-bottom:.85em}
+.sec .lead{margin-bottom:1.1rem}
+
+/* ============================================================
+   CARTA — linguagem de assinatura
+   ============================================================ */
+
+/* grelha de carta no hero */
+.hero{position:relative;overflow:hidden}
+.hero::before{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    linear-gradient(var(--linha) 1px,transparent 1px),
+    linear-gradient(90deg,var(--linha) 1px,transparent 1px);
+  background-size:64px 64px;
+  opacity:.28;
+  mask-image:linear-gradient(115deg,#000 0%,transparent 62%);
+  -webkit-mask-image:linear-gradient(115deg,#000 0%,transparent 62%);
+}
+.hero > *{position:relative;z-index:1}
+
+/* coordenada — marca de posição */
+.coord{
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;
+  color:var(--latao);display:block;margin-bottom:1.4rem;
+}
+
+/* tipografia utilitária da carta */
+.anot{
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--latao);
+}
+
+/* marca de reivindicação — usada na exclusividade */
+.parcela{
+  position:relative;border:1.5px solid var(--tinta);
+  background:
+    repeating-linear-gradient(45deg,transparent 0 9px,rgba(168,48,106,.07) 9px 10px);
+  padding:clamp(1.6rem,4vw,2.6rem);
+}
+.parcela::before{
+  content:"";position:absolute;top:-5px;left:-5px;
+  width:10px;height:10px;background:var(--latao);
+}
+.parcela::after{
+  content:"OCUPADO";position:absolute;top:-.62rem;right:1.2rem;
+  font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;
+  background:var(--latao);color:var(--branco);padding:.16rem .5rem;
+}
+
+/* mancha de água — fundo alternativo, substitui .sec-tom */
+.sec-tom{background:var(--agua);border-top:0!important}
+
+/* secção escura repintada */
+.sec-escura .ficha{background:#1B3240;border-color:#2E4A59}
+.sec-escura .ficha-termo{background:#0B1A23;border-left-color:var(--latao-claro)}
+
+/* cota vira marca de sondagem */
+.cota-tick{background:var(--latao)}
+
+/* ============================================================
+   RÉGUA DE MARGEM — quebra a simetria, atravessa a página
+   ============================================================ */
+.regua{
+  position:fixed;left:0;top:0;bottom:0;width:34px;
+  display:none;z-index:40;pointer-events:none;
+  background:var(--papel);border-right:1px solid var(--linha);
+}
+@media (min-width:1180px){.regua{display:block}}
+.regua-tick{
+  position:absolute;left:0;width:100%;
+  font-family:var(--mono);font-size:.58rem;letter-spacing:.05em;
+  color:var(--tinta-70);text-align:center;
+  writing-mode:vertical-rl;transform:rotate(180deg);
+  border-top:1px solid var(--linha);padding-top:.4rem;
+}
+body{margin-left:0}
+@media (min-width:1180px){
+  body > header, body > main, body > footer{margin-left:34px}
+}
+
+/* ============================================================
+   MOVIMENTO — revelação em scroll, selo, sonar, diagrama vivo
+   ============================================================ */
+.rev{opacity:0;transform:translateY(22px);
+  transition:opacity .7s cubic-bezier(.16,.8,.24,1),transform .7s cubic-bezier(.16,.8,.24,1)}
+.rev.on{opacity:1;transform:translateY(0)}
+.rev-1{transition-delay:.08s}.rev-2{transition-delay:.16s}.rev-3{transition-delay:.24s}
+
+/* selo a bater */
+.parcela::after{
+  transform:scale(2.4) rotate(-18deg);opacity:0;
+  transition:transform .5s cubic-bezier(.2,1.4,.4,1),opacity .3s;
+}
+.parcela.on::after{transform:scale(1) rotate(-8deg);opacity:1}
+
+/* sonar — ping de localização no hero */
+.sonar{
+  position:relative;display:inline-flex;align-items:center;
+  gap:.55rem;margin-bottom:1rem;
+}
+.sonar-pt{position:relative;width:9px;height:9px;flex:none}
+.sonar-pt::before,.sonar-pt::after{
+  content:"";position:absolute;inset:0;border-radius:50%;
+  background:var(--latao);
+}
+.sonar-pt::after{
+  animation:ping 2.6s cubic-bezier(0,0,.2,1) infinite;
+}
+@keyframes ping{
+  0%{transform:scale(1);opacity:.55}
+  75%,100%{transform:scale(5.5);opacity:0}
+}
+
+/* diagrama — camadas a montar-se */
+.camada-g{opacity:0;transform:translateY(14px);
+  transition:opacity .6s ease,transform .6s ease}
+.diagrama.on .camada-g{opacity:1;transform:translateY(0)}
+.diagrama.on .g-canais{transition-delay:.05s}
+.diagrama.on .g-liga1{transition-delay:.32s}
+.diagrama.on .g-camada{transition-delay:.42s}
+.diagrama.on .g-seta{transition-delay:.78s}
+.diagrama.on .g-resultado{transition-delay:.92s}
+.g-seta path{
+  stroke-dasharray:60;stroke-dashoffset:60;
+  transition:stroke-dashoffset .4s ease .78s;
+}
+.diagrama.on .g-seta path{stroke-dashoffset:0}
+
+/* hover — cartões e botões ganham vida real */
+.ficha{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.ficha:hover{transform:translateY(-3px);border-color:var(--latao);
+  box-shadow:0 10px 26px -14px rgba(0,0,0,.28)}
+.btn{transition:transform .18s ease,box-shadow .18s ease,background-color .18s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px -10px rgba(0,0,0,.35)}
+
+@media (prefers-reduced-motion:reduce){
+  .rev{opacity:1!important;transform:none!important;transition:none!important}
+  .sonar-pt::after{animation:none!important;display:none}
+  .camada-g{opacity:1!important;transform:none!important}
+  .g-seta path{stroke-dashoffset:0!important}
+  .parcela::after{transform:scale(1) rotate(-8deg)!important;opacity:1!important}
+  .ficha:hover,.btn:hover{transform:none!important}
+}
+
+/* ============================================================
+   ESCADA — as nove camadas como pilha real, não lista
+   ============================================================ */
+.escada{position:relative;margin-top:.4rem}
+.escada-item{
+  display:grid;grid-template-columns:32px 1fr;gap:0 1.2rem;
+  position:relative;padding-bottom:1.85rem;
+}
+.escada-item:last-child{padding-bottom:0}
+.escada-item::before{
+  content:"";position:absolute;left:15px;top:32px;bottom:-4px;width:1px;
+  background:var(--linha);
+}
+.escada-item:last-child::before{display:none}
+.escada-n{
+  font-family:var(--mono);font-size:.7rem;color:var(--branco);
+  background:var(--tinta-70);width:30px;height:30px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;z-index:1;flex:none;
+  transition:background-color .35s ease .05s;
+}
+.escada-item.on .escada-n{background:var(--latao)}
+.escada-tx b{display:block;font-family:var(--display);font-weight:600;
+  font-size:1.06rem;margin-bottom:.28rem;letter-spacing:-.01em}
+.escada-tx p{margin:0;color:var(--tinta-70);font-size:.94rem;line-height:1.55}
+
+/* pilares ganham o mesmo hover das fichas */
+.pilar{transition:transform .25s ease,border-color .25s ease}
+
+/* ============================================================
+   SISTEMA EDITORIAL — escala, assimetria, sangramento
+   ============================================================ */
+
+/* escala brutal */
+.mega{
+  font-family:var(--display);font-variation-settings:"wdth" 125;font-weight:700;
+  font-size:clamp(2.6rem,.6rem + 5.4vw,5.4rem);line-height:.92;letter-spacing:-.035em;
+  margin:0 0 1.2rem;
+}
+.micro{
+  font-family:var(--mono);font-size:.6rem;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--tinta-70);
+}
+
+/* grelha editorial assimétrica */
+@media (min-width:960px){
+  .ed{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(2rem,5vw,5rem);align-items:start}
+  .ed-inv{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}
+  .ed-desloca{padding-left:clamp(2rem,12vw,11rem)}
+  .estreito-ed{max-width:56ch}
+}
+
+/* sangramento — quebra a coluna */
+.sangra{width:100%;max-width:none;margin-inline:0}
+
+/* ============================================================
+   RANKING — a prova como gráfico, não como frase
+   ============================================================ */
+.rank{margin:2.4rem 0 0;border-top:1px solid rgba(255,255,255,.14)}
+.rank-l{
+  display:grid;grid-template-columns:2.2rem minmax(0,1fr) auto;
+  gap:0 1.1rem;align-items:center;
+  padding:1.15rem 0;border-bottom:1px solid rgba(255,255,255,.14);
+  position:relative;
+}
+.rank-pos{
+  font-family:var(--mono);font-size:.78rem;color:#7C919B;
+}
+.rank-nome{font-size:1rem;color:#DCE6E9;min-width:0}
+.rank-l[data-eu] .rank-nome{color:var(--branco);font-weight:600}
+.rank-l[data-eu] .rank-pos{color:var(--latao-claro)}
+.rank-barra{
+  grid-column:2/4;height:5px;background:rgba(255,255,255,.10);
+  margin-top:.55rem;position:relative;overflow:hidden;
+}
+.rank-barra i{
+  position:absolute;inset:0 auto 0 0;width:0;background:#5E7682;
+  transition:width 1.1s cubic-bezier(.16,.8,.24,1);
+}
+.rank-l[data-eu] .rank-barra i{background:var(--latao)}
+.rank.on .rank-barra i{width:var(--w)}
+.rank-n{
+  font-family:var(--mono);font-size:.82rem;color:#A8B6BC;white-space:nowrap;
+}
+.rank-l[data-eu] .rank-n{color:var(--branco)}
+.rank-leg{
+  font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;
+  text-transform:uppercase;color:#7C919B;margin-top:1.1rem;
+}
+
+/* número gigante de destaque */
+.num-gigante{
+  font-family:var(--display);font-variation-settings:"wdth" 125;font-weight:700;
+  font-size:clamp(3.4rem,1rem + 6.5vw,6.6rem);line-height:.82;letter-spacing:-.04em;
+  color:var(--latao);display:block;
+}
+.num-rot{font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--tinta-70);display:block;margin-top:.9rem;max-width:26ch}
